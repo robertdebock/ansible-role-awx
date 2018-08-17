@@ -41,4 +41,4 @@
   loop_control:
     loop_var: organization
   when:
-    - wait_for_awx_result.status == 200
+    - awx_configure|bool == true

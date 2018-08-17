@@ -13,6 +13,10 @@ awx_postgres_database:
 
 awx_secret_key: awxsecret
 
+# Should this role attempt to configure AWX?
+# "true" or "yes" will attempt to parse {{ awx_organizations }} and create all defined organizations, users, projects, etc.
+awx_configure: false
+
 awx_organizations:
   - name: demo
     description: demo organization
