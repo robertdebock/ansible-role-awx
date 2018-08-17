@@ -22,7 +22,7 @@ Requirements
 Role Variables
 --------------
 
-- awx_parameter: Description of values. [default: value]
+- awx_organization: A layout describing how to configure AWX. [default: see defaults/main.yml]
 
 Dependencies
 ------------
