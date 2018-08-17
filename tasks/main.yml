@@ -35,14 +35,6 @@
 - name: flush handlers
   meta: flush_handlers
 
-- name: wait for awx
-  uri:
-    url: "http://{{ ansible_default_ipv4.address }}/#/login"
-  register: result
-  until: result.status == 200
-  retries: 10
-  delay: 30
-
 - name: configure organizations
   include: organizations.yml
   with_items: "{{ awx_organizations }}"
