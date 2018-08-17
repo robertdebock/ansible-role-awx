@@ -6,6 +6,8 @@
     chdir: /tmp/awx-{{ awx_version }}/installer
   notify:
     - wait for awx
+  when:
+    - ansible_virtualization_type != "docker"
 
 - name: wait for awx
   uri:
