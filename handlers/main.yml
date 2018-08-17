@@ -12,7 +12,7 @@
 - name: wait for awx
   uri:
     url: "http://{{ ansible_default_ipv4.address }}/#/login"
-  register: result
-  until: result.status == 200
+  register: wait_for_awx_result
+  until: wait_for_awx_result.status == 200
   retries: 10
   delay: 30

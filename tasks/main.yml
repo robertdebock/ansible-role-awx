@@ -40,3 +40,5 @@
   with_items: "{{ awx_organizations }}"
   loop_control:
     loop_var: organization
+  when:
+    - wait_for_awx_result.status == 200
