@@ -1,4 +1,8 @@
 ---
+- name: show user
+  debug:
+    var: user
+
 - name: create user
   tower_user:
     username: "{{ user.name }}"

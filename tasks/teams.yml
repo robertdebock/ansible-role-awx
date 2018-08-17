@@ -1,4 +1,8 @@
 ---
+- name: show team
+  debug:
+    var: team
+
 - name: create team
   tower_team:
     name: "{{ team.name }}"
