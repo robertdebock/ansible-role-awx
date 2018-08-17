@@ -1,0 +1,10 @@
+---
+- name: create inventory
+  tower_inventory:
+    name: "{{ inventory.name }}"
+    description: "{{ inventory.description }}"
+    organization: "{{ awx_organizations.name }}"
+    tower_host: "http://{{ ansible_default_ipv4.address }}"
+    tower_username: admin
+    tower_password: "{{ awx_admin_password }}"
+    tower_verify_ssl: no

@@ -1,0 +1,13 @@
+---
+- name: create project
+  tower_project:
+    name: "{{ project.name }}"
+    description: "{{ project.description }}"
+    organization: "{{ awx_organizations.name }}"
+    scm_credential: "{{ project.scm_credential }}"
+    scm_type: "{{ project.scm_type }}"
+    scm_url: "{{ project.scm_url }}"
+    tower_host: "http://{{ ansible_default_ipv4.address }}"
+    tower_username: admin
+    tower_password: "{{ awx_admin_password }}"
+    tower_verify_ssl: no

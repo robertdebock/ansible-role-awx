@@ -1,0 +1,14 @@
+---
+- name: create job_templates
+  tower_job_template:
+    name: "{{ job_template.name }}"
+    description: "{{ job_template.description }}"
+    organization: "{{ awx_organizations.name }}"
+    project: "{{ job_template.project }}"
+    playbook: "{{ job_template.playbook }}"
+    inventory: "{{ job_template.inventory }}"
+    machine_credential: "{{ job_template.machine_credential }}"
+    tower_host: "http://{{ ansible_default_ipv4.address }}"
+    tower_username: admin
+    tower_password: "{{ awx_admin_password }}"
+    tower_verify_ssl: no

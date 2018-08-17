@@ -1,0 +1,57 @@
+---
+- name: create organization
+  tower_organization:
+    name: "{{ organization.name }}"
+    description: "{{ organization.description }}"
+    tower_host: "http://{{ ansible_default_ipv4.address }}"
+    tower_username: admin
+    tower_password: "{{ awx_admin_password }}"
+    tower_verify_ssl: no
+
+- name: create users in organization
+  include: users.yml
+  with_items: "{{ organization.users }}"
+  loop_control:
+    loop_var: user
+  when:
+    - organization.users is defined
+
+- name: create teams in organization
+  include: teams.yml
+  with_items: "{{ organization.teams }}"
+  loop_control:
+    loop_var: team
+  when:
+    - organization.teams is defined
+
+- name: create credentials in organization
+  include: credentials.yml
+  with_items: "{{ organization.credentials }}"
+  loop_control:
+    loop_var: credential
+  when:
+    - organization.credentials is defined
+
+- name: create projects in organization
+  include: projects.yml
+  with_items: "{{ organization.projects }}"
+  loop_control:
+    loop_var: project
+  when:
+    - organization.prjects is defined
+
+- name: create inventory in organization
+  include: inventories.yml
+  with_items: "{{ organization.inventories }}"
+  loop_control:
+    loop_var: inventory
+  when:
+    - organization.inventories is defined
+
+- name: create job_templates in organization
+  include: job_templates.yml
+  with_items: "{{ organization.job_templates }}"
+  loop_control:
+    loop_var: job_template
+  when:
+    - organization.templates is defined

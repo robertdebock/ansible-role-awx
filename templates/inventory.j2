@@ -1,0 +1,20 @@
+localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python"
+
+[all:vars]
+dockerhub_base=ansible
+dockerhub_version=latest
+
+postgres_data_dir={{ awx_postgres_data_dir }}
+host_port=80
+
+docker_compose_dir=/var/lib/awx
+
+pg_username={{ awx_postgres_database.username }}
+pg_password={{ awx_postgres_database.password }}
+pg_database={{ awx_postgres_database.database }}
+pg_port={{ awx_postgres_database.port }}
+
+default_admin_user=admin
+default_admin_password={{ awx_admin_password }}
+
+secret_key={{ awx_secret_key }}

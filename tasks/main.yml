@@ -1,0 +1,50 @@
+---
+# tasks file for awx
+- name: load default variables
+  include_vars:
+    file: default.yml
+
+- name: load os-specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+    - default.yml
+
+- name: unarchive software
+  unarchive:
+    src: https://github.com/ansible/awx/archive/{{ awx_version }}.tar.gz
+    dest: /tmp
+    remote_src: yes
+    creates: /tmp/awx-{{ awx_version }}
+  notify:
+    - run installer
+
+- name: configure inventory
+  template:
+    src: inventory.j2
+    dest: /tmp/awx-{{ awx_version }}/installer/inventory
+
+- name: install requirements
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - ansible
+    - ansible-tower-cli
+    - docker
+
+- name: flush handlers
+  meta: flush_handlers
+
+- name: wait for awx
+  uri:
+    url: "http://{{ ansible_default_ipv4.address }}/#/login"
+  register: result
+  until: result.status == 200
+  retries: 10
+  delay: 30
+
+- name: configure organizations
+  include: organizations.yml
+  with_items: "{{ awx_organizations }}"
+  loop_control:
+    loop_var: organization

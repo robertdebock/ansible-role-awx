@@ -1,0 +1,14 @@
+---
+- name: create user
+  tower_user:
+    username: "{{ user.name }}"
+    password: "{{ user.password }}"
+    email: "{{ user.email }}"
+    first_name: "{{ user.first_name }}"
+    last_name: "{{ user.last_name  }}"
+    superuser: "{{ user.superuser | default(omit) }}"
+    auditor: "{{ user.auditor| default(omit) }}"
+    tower_host: "http://{{ ansible_default_ipv4.address }}"
+    tower_username: admin
+    tower_password: "{{ awx_admin_password }}"
+    tower_verify_ssl: no
