@@ -1,4 +1,8 @@
 ---
+- name: show details
+  debug:
+    msg: "{{ job_template.name }}"
+
 - name: create job_templates
   tower_job_template:
     name: "{{ job_template.name }}"
@@ -12,3 +16,4 @@
     tower_username: admin
     tower_password: "{{ awx_admin_password }}"
     tower_verify_ssl: no
+  ignore_errors: yes

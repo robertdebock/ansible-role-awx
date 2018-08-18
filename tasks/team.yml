@@ -1,7 +1,7 @@
 ---
-- name: show team
+- name: show details
   debug:
-    var: team
+    msg: "{{ team.name }}"
 
 - name: create team
   tower_team:
@@ -12,3 +12,4 @@
     tower_username: admin
     tower_password: "{{ awx_admin_password }}"
     tower_verify_ssl: no
+  ignore_errors: yes

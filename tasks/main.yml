@@ -36,7 +36,7 @@
   meta: flush_handlers
 
 - name: configure organizations
-  include: organizations.yml
+  include: organization.yml
   with_items: "{{ awx_organizations }}"
   loop_control:
     loop_var: organization

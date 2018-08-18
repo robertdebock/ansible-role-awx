@@ -19,7 +19,7 @@ awx_configure: false
 
 awx_organizations:
   - name: demo
-    description: demo organization
+    description: Demo organization
     users:
       - name: demo
         password: demo
@@ -27,20 +27,11 @@ awx_organizations:
         first_name: De
         last_name: Mo
         superuser: true
-      - name: demo2
-        password: demo2
-        email: demo2@example.com
-        first_name: De
-        last_name: Mo2
     teams:
       - name: demo
-        description: demo team
+        description: Demo team
         members:
           - name: demo
-      - name: demo2
-        description: demo2 team
-        members:
-          - name: demo2
     credentials:
       - name: demo_ssh
         description: demo ssh credentials
@@ -68,5 +59,3 @@ awx_organizations:
         playbook: demo.yml
         inventory: demo
         machine_credential: demo_ssh
-  - name: demo2
-    description: demo2 organization
