@@ -48,7 +48,7 @@ awx_organizations:
         description: demo project
         scm_credential: demo_scm
         scm_type: git
-        scl_url: "https://github.com/ansible/awx-example"
+        scm_url: "https://github.com/robertdebock/ansible"
     inventories:
       - name: demo
         description: demo inventory
@@ -56,6 +56,7 @@ awx_organizations:
       - name: demo
         description: demo_job_template
         project: demo
-        playbook: demo.yml
+        playbook: ping.yml
         inventory: demo
         machine_credential: demo_ssh
+        job_type: run
