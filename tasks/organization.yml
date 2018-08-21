@@ -1,8 +1,4 @@
 ---
-- name: show details
-  debug:
-    msg: "{{ organization.name }}"
-
 - name: create organization
   tower_organization:
     name: "{{ organization.name }}"

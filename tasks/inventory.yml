@@ -1,8 +1,4 @@
 ---
-- name: show details
-  debug:
-    msg: "{{ inventory.name }}"
-
 - name: create inventory
   tower_inventory:
     name: "{{ inventory.name }}"
@@ -12,4 +8,3 @@
     tower_username: admin
     tower_password: "{{ awx_admin_password }}"
     tower_verify_ssl: no
-  ignore_errors: yes

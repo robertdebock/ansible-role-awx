@@ -1,8 +1,4 @@
 ---
-- name: show details
-  debug:
-    msg: "{{ project.name }}"
-
 - name: create project
   tower_project:
     name: "{{ project.name }}"
@@ -11,8 +7,8 @@
     scm_credential: "{{ project.scm_credential }}"
     scm_type: "{{ project.scm_type }}"
     scm_url: "{{ project.scm_url }}"
+    scm_update_on_launch: "{{ scm_update_on_launch | default('yes')}}"
     tower_host: "http://{{ ansible_default_ipv4.address }}"
     tower_username: admin
     tower_password: "{{ awx_admin_password }}"
     tower_verify_ssl: no
-  ignore_errors: yes
