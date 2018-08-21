@@ -7,7 +7,7 @@
   tower_job_template:
     name: "{{ job_template.name }}"
     description: "{{ job_template.description }}"
-    organization: "{{ awx_organizations.name }}"
+    organization: "{{ awx_organization.name }}"
     project: "{{ job_template.project }}"
     playbook: "{{ job_template.playbook }}"
     inventory: "{{ job_template.inventory }}"

@@ -7,7 +7,7 @@
   tower_project:
     name: "{{ project.name }}"
     description: "{{ project.description }}"
-    organization: "{{ awx_organizations.name }}"
+    organization: "{{ awx_organization.name }}"
     scm_credential: "{{ project.scm_credential }}"
     scm_type: "{{ project.scm_type }}"
     scm_url: "{{ project.scm_url }}"
