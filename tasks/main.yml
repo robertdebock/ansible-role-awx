@@ -29,8 +29,14 @@
     name: "{{ item }}"
   with_items:
     - ansible
-    - ansible-tower-cli
     - docker
+
+- name: install reqquirements on localhost
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - ansible-tower-cli
+  delegate_to: localhost
 
 - name: flush handlers
   meta: flush_handlers

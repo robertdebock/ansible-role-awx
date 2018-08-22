@@ -7,6 +7,10 @@
     tower_username: admin
     tower_password: "{{ awx_admin_password }}"
     tower_verify_ssl: "{{ awx_tower_verify_ssl }}"
+  register: createorganization
+  until: createorganization is succeeded
+  retries: 3
+  delegate_to: localhost
 
 - name: create users in organization
   include_tasks: user.yml
@@ -61,3 +65,6 @@
     label: job_template.name
   when:
     - organization.job_templates is defined
+  register: createjobtemplateinorganization
+  until: createjobtemplateinorganization is succeeded
+  retries: 3

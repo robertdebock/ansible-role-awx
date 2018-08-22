@@ -4,14 +4,15 @@
   command: ansible-playbook -i inventory install.yml
   args:
     chdir: /tmp/awx-{{ awx_version }}/installer
-  notify:
-    - wait for awx
   when:
     - ansible_virtualization_type != "docker"
+  notify:
+    - wait for awx
 
 - name: wait for awx
   uri:
     url: "http://{{ ansible_default_ipv4.address }}/#/login"
+    follow_redirects: none
   register: wait_for_awx_result
   until: wait_for_awx_result.status == 200
   retries: 10

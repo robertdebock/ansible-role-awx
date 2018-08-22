@@ -8,3 +8,4 @@
     tower_username: admin
     tower_password: "{{ awx_admin_password }}"
     tower_verify_ssl: "{{ awx_tower_verify_ssl }}"
+  delegate_to: localhost
