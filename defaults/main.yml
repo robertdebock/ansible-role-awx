@@ -15,7 +15,7 @@ awx_secret_key: awxsecret
 
 awx_tower_verify_ssl: no
 
-#awx_organizations:
+# awx_organizations:
 #  - name: demo
 #    description: Demo organization
 #    users:
