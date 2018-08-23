@@ -17,3 +17,7 @@
   until: wait_for_awx_result.status == 200
   retries: 10
   delay: 30
+
+- name: wait 30 seconds
+  pause:
+    seconds: 30

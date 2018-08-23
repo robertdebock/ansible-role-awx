@@ -47,4 +47,4 @@
   loop_control:
     loop_var: organization
   when:
-    - awx_configure|bool == true
+    - awx_organizations is defined

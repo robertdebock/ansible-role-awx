@@ -22,6 +22,12 @@ Requirements
 Role Variables
 --------------
 
+- awx_version: The version in install. [default: see `default/main.yml`]
+- awx_admin_password: The initial password for the user `admin`. [default: `password`]
+- awx_postgres_data_dir: The directory where to place PostgreSQL data. [default: `/var/lib/pgdata`]
+- awx_postgres_database: The configuration for PostgreSQL. [default: see `default/main.yml`]
+- awx_secret_key: A key used by Tower to encyrpt stuff, likely the only variable you'd like to customize. [default: `awxsecret`]
+- awx_tower_verify_ssl: When speaking to Tower, can valid SSL certificates be expecte? [default: `no`]
 - awx_organization: A layout describing how to configure AWX. [default: see defaults/main.yml]
 
 Dependencies
@@ -62,7 +68,47 @@ Example Playbook
 
   roles:
     - role: robertdebock.awx
-
+            awx_organizations:
+              - name: demo
+                description: Demo organization
+                users:
+                  - name: demo
+                    password: demo
+                    email: demo@example.com
+                    first_name: De
+                    last_name: Mo
+                    superuser: true
+                teams:
+                  - name: demo
+                    description: Demo team
+                credentials:
+                  - name: demo_ssh
+                    description: demo ssh credentials
+                    kind: ssh
+                    username: demo
+                    password: demo
+                  - name: demo_scm
+                    description: demo scm credentials
+                    kind: scm
+                    username: Null
+                    password: Null
+                projects:
+                  - name: demo
+                    description: demo project
+                    scm_credential: demo_scm
+                    scm_type: git
+                    scm_url: "https://github.com/robertdebock/ansible"
+                inventories:
+                  - name: demo
+                    description: demo inventory
+                job_templates:
+                  - name: demo
+                    description: demo_job_template
+                    project: demo
+                    playbook: ping.yml
+                    inventory: demo
+                    machine_credential: demo_ssh
+                    job_type: run
 ```
 
 To install this role:
