@@ -18,6 +18,7 @@ Requirements
 - A system installed with required packages to run Ansible. Hint: [bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap).
 - Access to a repository containing packages, likely on the internet.
 - A recent version of Ansible. (Tests run on the last 3 release of Ansible.)
+- Have Docker installed. Hint [docker](https://galaxy.ansible.com/robertdebock/bootstrap).
 
 Role Variables
 --------------
@@ -67,6 +68,7 @@ Example Playbook
   become: yes
 
   roles:
+    - role: robertdebock.docker
     - role: robertdebock.awx
             awx_organizations:
               - name: demo
