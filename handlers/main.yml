@@ -15,7 +15,7 @@
     follow_redirects: none
   register: wait_for_awx_result
   until: wait_for_awx_result.status == 200
-  retries: 10
+  retries: 20
   delay: 30
 
 - name: wait 30 seconds
