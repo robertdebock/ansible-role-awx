@@ -70,47 +70,47 @@ Example Playbook
   roles:
     - role: robertdebock.docker
     - role: robertdebock.awx
-            awx_organizations:
-              - name: demo
-                description: Demo organization
-                users:
-                  - name: demo
-                    password: demo
-                    email: demo@example.com
-                    first_name: De
-                    last_name: Mo
-                    superuser: true
-                teams:
-                  - name: demo
-                    description: Demo team
-                credentials:
-                  - name: demo_ssh
-                    description: demo ssh credentials
-                    kind: ssh
-                    username: demo
-                    password: demo
-                  - name: demo_scm
-                    description: demo scm credentials
-                    kind: scm
-                    username: Null
-                    password: Null
-                projects:
-                  - name: demo
-                    description: demo project
-                    scm_credential: demo_scm
-                    scm_type: git
-                    scm_url: "https://github.com/robertdebock/ansible"
-                inventories:
-                  - name: demo
-                    description: demo inventory
-                job_templates:
-                  - name: demo
-                    description: demo_job_template
-                    project: demo
-                    playbook: ping.yml
-                    inventory: demo
-                    machine_credential: demo_ssh
-                    job_type: run
+      awx_organizations:
+        - name: demo
+          description: Demo organization
+          users:
+            - name: demo
+              password: demo
+              email: demo@example.com
+              first_name: De
+              last_name: Mo
+              superuser: true
+          teams:
+            - name: demo
+              description: Demo team
+          credentials:
+            - name: demo_ssh
+              description: demo ssh credentials
+              kind: ssh
+              username: demo
+              password: demo
+            - name: demo_scm
+              description: demo scm credentials
+              kind: scm
+              username: Null
+              password: Null
+          projects:
+            - name: demo
+              description: demo project
+              scm_credential: demo_scm
+              scm_type: git
+              scm_url: "https://github.com/robertdebock/ansible"
+          inventories:
+            - name: demo
+              description: demo inventory
+          job_templates:
+            - name: demo
+              description: demo_job_template
+              project: demo
+              playbook: ping.yml
+              inventory: demo
+              machine_credential: demo_ssh
+              job_type: run
 ```
 
 To install this role:
