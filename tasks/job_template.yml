@@ -19,6 +19,6 @@
     - job_template.inventory is defined
     - job_template.machine_credential is defined
   register: create_job_templates
-  until: create_job_templates.status == 200
+  until: create_job_templates is succeeded
   retries: 5
   delay: 30
