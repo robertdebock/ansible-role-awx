@@ -31,7 +31,7 @@
     - ansible
     - docker
 
-- name: install reqquirements on localhost
+- name: install requirements on localhost
   pip:
     name: "{{ item }}"
   with_items:
