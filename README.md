@@ -68,6 +68,7 @@ Example Playbook
   become: yes
 
   roles:
+    - role: robertdebock.bootstrap
     - role: robertdebock.docker
     - role: robertdebock.awx
       awx_organizations:
