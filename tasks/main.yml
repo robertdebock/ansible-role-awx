@@ -27,6 +27,7 @@
 - name: install requirements
   pip:
     name: "{{ item }}"
+    state: present
   with_items:
     - ansible
     - docker
@@ -34,6 +35,7 @@
 - name: install requirements on localhost
   pip:
     name: "{{ item }}"
+    state: present
   with_items:
     - ansible-tower-cli
   delegate_to: localhost
