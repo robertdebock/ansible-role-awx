@@ -1,0 +1,52 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: awx-alpine-edge
+    image: alpine:edge
+    command: sh -c "while true ; do sleep 1 ; done"
+  - name: awx-alpine-latest
+    image: alpine:latest
+    command: sh -c "while true ; do sleep 1 ; done"
+  - name: awx-archlinux
+    image: base/archlinux
+  - name: awx-centos-6
+    image: centos:6
+  - name: awx-centos-latest
+    image: centos:latest
+  - name: awx-debian-latest
+    image: debian:latest
+  - name: awx-debian-stable
+    image: debian:stable
+  - name: awx-debian-unstable
+    image: debian:unstable
+  - name: awx-fedora-latest
+    image: fedora:latest
+  - name: awx-fedora-rawhide
+    image: fedora:rawhide
+  - name: awx-gentoo
+    image: gentoo/stage3-amd64
+  - name: awx-opensuse-leap
+    image: opensuse:leap
+  - name: awx-opensuse-tumbleweed
+    image: opensuse:tumbleweed
+  - name: awx-ubuntu-artful
+    image: ubuntu:artful
+  - name: awx-ubuntu-devel
+    image: ubuntu:devel
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: default
+verifier:
+  name: goss
+  lint:
+    name: yamllint

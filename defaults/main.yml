@@ -13,6 +13,9 @@ awx_postgres_database:
 
 awx_secret_key: awxsecret
 
+# To update packages this role places on the system, set `awx_package_state` to `latest`.
+awx_package_state: present
+
 awx_tower_verify_ssl: no
 
 # awx_organizations:

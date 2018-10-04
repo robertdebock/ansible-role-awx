@@ -1,15 +1,5 @@
 ---
 # tasks file for awx
-- name: load default variables
-  include_vars:
-    file: default.yml
-
-- name: load os-specific variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - "{{ ansible_distribution }}.yml"
-    - default.yml
-
 - name: unarchive software
   unarchive:
     src: https://github.com/ansible/awx/archive/{{ awx_version }}.tar.gz
@@ -17,7 +7,7 @@
     remote_src: yes
     creates: /tmp/awx-{{ awx_version }}
   notify:
-    - run installer
+    - run awx installer
 
 - name: configure inventory
   template:
@@ -27,7 +17,7 @@
 - name: install requirements
   pip:
     name: "{{ item }}"
-    state: present
+    state: "{{ awx_package_state }}"
   with_items:
     - ansible
     - docker
@@ -35,7 +25,7 @@
 - name: install requirements on localhost
   pip:
     name: "{{ item }}"
-    state: present
+    state: "{{ awx_package_state }}"
   with_items:
     - ansible-tower-cli
   delegate_to: localhost
