@@ -28,7 +28,7 @@
     state: "{{ awx_package_state }}"
   with_items:
     - ansible-tower-cli
-  delegate_to: localhost
+  connection: local
 
 - name: flush handlers
   meta: flush_handlers

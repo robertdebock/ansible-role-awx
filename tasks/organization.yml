@@ -10,7 +10,7 @@
   register: createorganization
   until: createorganization is succeeded
   retries: 3
-  delegate_to: localhost
+  connection: local
 
 - name: create users in organization
   include_tasks: user.yml

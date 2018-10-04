@@ -12,7 +12,7 @@
     tower_username: admin
     tower_password: "{{ awx_admin_password }}"
     tower_verify_ssl: "{{ awx_tower_verify_ssl }}"
-  delegate_to: localhost
+  connection: local
   when:
     - job_template.project is defined
     - job_template.playbook is defined
