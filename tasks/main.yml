@@ -16,18 +16,13 @@
 
 - name: install requirements
   pip:
-    name: "{{ item }}"
+    name: "{{ awx_pip_requirements }}"
     state: "{{ awx_package_state }}"
-  with_items:
-    - ansible
-    - docker
 
 - name: install requirements on localhost
   pip:
-    name: "{{ item }}"
+    name: ansible-tower-cli
     state: "{{ awx_package_state }}"
-  with_items:
-    - ansible-tower-cli
   connection: local
 
 - name: flush handlers

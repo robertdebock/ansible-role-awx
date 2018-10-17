@@ -30,8 +30,6 @@ platforms:
     image: fedora:latest
   - name: awx-fedora-rawhide
     image: fedora:rawhide
-  - name: awx-gentoo
-    image: gentoo/stage3-amd64
   - name: awx-opensuse-leap
     image: opensuse:leap
   - name: awx-opensuse-tumbleweed

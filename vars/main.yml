@@ -1,3 +1,5 @@
 ---
 # vars file for awx
-# awx_parameter: value
+awx_pip_requirements:
+  - ansible
+  - docker
