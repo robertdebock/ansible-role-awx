@@ -6,7 +6,7 @@
     project: "{{ job_template.project }}"
     playbook: "{{ job_template.playbook }}"
     inventory: "{{ job_template.inventory }}"
-    machine_credential: "{{ job_template.machine_credential }}"
+    credential: "{{ job_template.credential }}"
     job_type: "{{ job_template.job_type | default('run') }}"
     tower_host: "http://{{ ansible_default_ipv4.address }}"
     tower_username: admin
@@ -17,7 +17,7 @@
     - job_template.project is defined
     - job_template.playbook is defined
     - job_template.inventory is defined
-    - job_template.machine_credential is defined
+    - job_template.credential is defined
   register: create_job_templates
   until: create_job_templates is succeeded
   retries: 5

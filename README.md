@@ -121,7 +121,7 @@ Example Playbook
               project: demo
               playbook: ping.yml
               inventory: demo
-              machine_credential: demo_ssh
+              credential: demo_ssh
               job_type: run
 ```
 
