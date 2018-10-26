@@ -1,5 +1,12 @@
 ---
 # tasks file for awx
+- name: check system requirements
+  assert:
+    that:
+      - ansible_memtotal_mb >= 2048
+      - ansible_processor_vcpus >= 2
+    msg: "Your system does not minimum system requirements, based on https://github.com/ansible/awx/blob/devel/INSTALL.md#system-requirements"
+
 - name: unarchive software
   unarchive:
     src: https://github.com/ansible/awx/archive/{{ awx_version }}.tar.gz
