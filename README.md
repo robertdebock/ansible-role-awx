@@ -5,47 +5,124 @@ awx
 
 Installs and optionally configures AWX for your system.
 
-[Unit tests](https://travis-ci.org/robertdebock/ansible-role-awx) are done on every commit and periodically.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-awx/issues)
+Example Playbook
+----------------
 
-To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
+This example is taken from `molecule/default/playbook.yml`:
 ```
-pip install molecule
-molecule test
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  become: true
+
+  roles:
+    - role: robertdebock.bootstrap
+    - role: robertdebock.epel
+    - role: robertdebock.python_pip
+      python_pip_modules:
+        - name: ansible
+    - role: ansible-role-awx
+
 ```
-There are many scenarios available, please have a look in the `molecule/` directory.
+
+Role Variables
+--------------
+
+These variables are set in `defaults/main.yml`:
+```
+---
+# defaults file for awx
+
+# The version of AWX to install
+awx_version: 2.0.1
+
+# The default password for the user `admin`.
+awx_admin_password: password
+
+# The location where PostgreSQL should store its data.
+awx_postgres_data_dir: /var/lib/pgdata
+awx_postgres_database:
+  database: awx
+  username: awx
+  password: awxpass
+  port: 5432
+
+# AWX uses a secret key to encrypt data. This value should be stored in vault.
+awx_secret_key: awxsecret
+
+# To update packages this role places on the system, set `awx_package_state` to `latest`.
+awx_package_state: present
+
+# When using the API, should the SSL be verified?
+awx_tower_verify_ssl: no
+
+# You can populate AWX using this structure.
+# awx_organizations:
+#  - name: demo
+#    description: Demo organization
+#    users:
+#      - name: demo
+#        password: demo
+#        email: demo@example.com
+#        first_name: De
+#        last_name: Mo
+#        superuser: true
+#    teams:
+#      - name: demo
+#        description: Demo team
+#    credentials:
+#      - name: demo_ssh
+#        description: demo ssh credentials
+#        kind: ssh
+#        username: demo
+#        password: demo
+#      - name: demo_scm
+#        description: demo scm credentials
+#        kind: scm
+#        username: Null
+#        password: Null
+#    projects:
+#      - name: demo
+#        description: demo project
+#        scm_credential: demo_scm
+#        scm_type: git
+#        scm_url: "https://github.com/robertdebock/ansible"
+#    inventories:
+#      - name: demo
+#        description: demo inventory
+#    job_templates:
+#      - name: demo
+#        description: demo_job_template
+#        project: demo
+#        playbook: ping.yml
+#        inventory: demo
+#        credential: demo_ssh
+#        job_type: run
+
+```
+
+Requirements
+------------
+
+- Access to a repository containing packages, likely on the internet.
+- A recent version of Ansible. (Tests run on the last 3 release of Ansible.)
+
+These roles can be installed to ensure all requirements are met:
+
+- none
+
+To install all requirements at once: `ansible-galaxy install -r requirements.yml`.
 
 Context
---------
+-------
+
 This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
 
 Here is an overview of related roles:
 ![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/awx.png "Dependency")
 
-Requirements
-------------
-
-- A system installed with required packages to run Ansible. Hint: [bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap).
-- Access to a repository containing packages, likely on the internet.
-- A recent version of Ansible. (Tests run on the last 3 release of Ansible.)
-- Have Docker installed. Hint [docker](https://galaxy.ansible.com/robertdebock/bootstrap).
-
-Role Variables
---------------
-
-- awx_version: The version in install. [default: see `default/main.yml`]
-- awx_admin_password: The initial password for the user `admin`. [default: `password`]
-- awx_postgres_data_dir: The directory where to place PostgreSQL data. [default: `/var/lib/pgdata`]
-- awx_postgres_database: The configuration for PostgreSQL. [default: see `default/main.yml`]
-- awx_secret_key: A key used by Tower to encyrpt stuff, likely the only variable you'd like to customize. [default: `awxsecret`]
-- awx_tower_verify_ssl: When speaking to Tower, can valid SSL certificates be expecte? [default: `no`]
-- awx_organization: A layout describing how to configure AWX. [default: see defaults/main.yml]
-
-Dependencies
-------------
-
-- None known.
 
 Compatibility
 -------------
@@ -72,76 +149,26 @@ This role has been tested against the following distributions and Ansible versio
 
 A single star means the build may fail, it's marked as an experimental build.
 
-Example Playbook
-----------------
+Testing
+-------
 
-```
----
-- name: awx
-  hosts: all
-  gather_facts: no
-  become: yes
+[Unit tests](https://travis-ci.org/robertdebock/ansible-role-awx) are done on every commit and periodically.
 
-  roles:
-    - role: robertdebock.bootstrap
-    - role: robertdebock.docker
-    - role: robertdebock.awx
-      awx_organizations:
-        - name: demo
-          description: Demo organization
-          users:
-            - name: demo
-              password: demo
-              email: demo@example.com
-              first_name: De
-              last_name: Mo
-              superuser: true
-          teams:
-            - name: demo
-              description: Demo team
-          credentials:
-            - name: demo_ssh
-              description: demo ssh credentials
-              kind: ssh
-              username: demo
-              password: demo
-            - name: demo_scm
-              description: demo scm credentials
-              kind: scm
-              username: Null
-              password: Null
-          projects:
-            - name: demo
-              description: demo project
-              scm_credential: demo_scm
-              scm_type: git
-              scm_url: "https://github.com/robertdebock/ansible"
-          inventories:
-            - name: demo
-              description: demo inventory
-          job_templates:
-            - name: demo
-              description: demo_job_template
-              project: demo
-              playbook: ping.yml
-              inventory: demo
-              credential: demo_ssh
-              job_type: run
-```
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-awx/issues)
 
-To install this role:
-- Install this role individually using `ansible-galaxy install robertdebock.awx`
+To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
+```
+pip install molecule
+molecule test
+```
+There are many specific scenarios available, please have a look in the `molecule/` directory.
 
-Sample roles/requirements.yml: (install with `ansible-galaxy install -r roles/requirements.yml
-```
----
-- name: robertdebock.bootstrap
-```
 
 License
 -------
 
-Apache License, Version 2.0
+Apache-2.0
+
 
 Author Information
 ------------------
