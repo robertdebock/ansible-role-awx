@@ -1,5 +1,5 @@
 ---
-- name: create user
+- name: manage user
   tower_user:
     username: "{{ user.name }}"
     password: "{{ user.password | default(omit) }}"

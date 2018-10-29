@@ -1,5 +1,5 @@
 ---
-- name: create inventory
+- name: manage inventory
   tower_inventory:
     name: "{{ inventory.name }}"
     description: "{{ inventory.description | default(inventory.name) }}"

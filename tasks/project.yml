@@ -1,5 +1,5 @@
 ---
-- name: create project
+- name: manage project
   tower_project:
     name: "{{ project.name }}"
     description: "{{ project.description | default(project.name) }}"

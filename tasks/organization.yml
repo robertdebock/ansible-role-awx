@@ -1,18 +1,19 @@
 ---
-- name: create organization
+- name: manage organization
   tower_organization:
     name: "{{ organization.name }}"
-    description: "{{ organization.description | default(organization.name) }}"
+    state: "{{ organization.state | default(omit) }}"
+    description: "{{ organization.description | default(omit) }}"
     tower_host: "http://{{ ansible_default_ipv4.address }}"
     tower_username: admin
     tower_password: "{{ awx_admin_password }}"
     tower_verify_ssl: "{{ awx_tower_verify_ssl }}"
-  register: createorganization
-  until: createorganization is succeeded
+  register: manageorganization
+  until: manageorganization is succeeded
   retries: 3
   connection: local
 
-- name: create users in organization
+- name: manage users in organization
   include_tasks: user.yml
   with_items: "{{ organization.users }}"
   loop_control:
@@ -21,7 +22,7 @@
   when:
     - organization.users is defined
 
-- name: create teams in organization
+- name: manage teams in organization
   include_tasks: team.yml
   with_items: "{{ organization.teams }}"
   loop_control:
@@ -30,7 +31,7 @@
   when:
     - organization.teams is defined
 
-- name: create credentials in organization
+- name: manage credentials in organization
   include_tasks: credential.yml
   with_items: "{{ organization.credentials }}"
   loop_control:
@@ -39,7 +40,7 @@
   when:
     - organization.credentials is defined
 
-- name: create projects in organization
+- name: manage projects in organization
   include_tasks: project.yml
   with_items: "{{ organization.projects }}"
   loop_control:
@@ -48,7 +49,7 @@
   when:
     - organization.projects is defined
 
-- name: create inventory in organization
+- name: manage inventory in organization
   include_tasks: inventory.yml
   with_items: "{{ organization.inventories }}"
   loop_control:
@@ -57,7 +58,7 @@
   when:
     - organization.inventories is defined
 
-- name: create job_templates in organization
+- name: manage job_templates in organization
   include_tasks: job_template.yml
   with_items: "{{ organization.job_templates }}"
   loop_control:
@@ -65,6 +66,6 @@
     label: "{{ job_template.name }}"
   when:
     - organization.job_templates is defined
-  register: createjobtemplateinorganization
-  until: createjobtemplateinorganization is succeeded
+  register: managejobtemplateinorganization
+  until: managejobtemplateinorganization is succeeded
   retries: 3

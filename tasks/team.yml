@@ -1,5 +1,5 @@
 ---
-- name: create team
+- name: manage team
   tower_team:
     name: "{{ team.name }}"
     description: "{{ team.description | default(team.name) }}"

@@ -1,5 +1,5 @@
 ---
-- name: create job_templates
+- name: manage job_templates
   tower_job_template:
     name: "{{ job_template.name }}"
     description: "{{ job_template.description | default(job_template.name) }}"
@@ -18,7 +18,7 @@
     - job_template.playbook is defined
     - job_template.inventory is defined
     - job_template.credential is defined
-  register: create_job_templates
-  until: create_job_templates is succeeded
+  register: manage_job_templates
+  until: manage_job_templates is succeeded
   retries: 5
   delay: 30
