@@ -4,10 +4,12 @@
   gather_facts: false
   become: true
 
+  vars:
+    python_pip_modules:
+      - name: ansible
+
   roles:
-    - role: robertdebock.bootstrap
-    - role: robertdebock.buildtools
-    - role: robertdebock.python_pip
-      python_pip_modules:
-        - name: ansible
-    - role: ansible-role-awx
+    - robertdebock.bootstrap
+    - robertdebock.buildtools
+    - robertdebock.python_pip
+    - ansible-role-awx
