@@ -3,7 +3,7 @@
 - name: run awx installer
   command: ansible-playbook -i inventory install.yml
   args:
-    chdir: /tmp/awx-{{ awx_version }}/installer
+    chdir: "/tmp/awx-{{ awx_version }}/installer"
   when:
     - ansible_virtualization_type != "docker"
   notify:

@@ -5,21 +5,23 @@
     that:
       - ansible_memtotal_mb >= 2048
       - ansible_processor_vcpus >= 2
-    msg: "Your system does not minimum system requirements, based on https://github.com/ansible/awx/blob/devel/INSTALL.md#system-requirements"
+    msg: >
+      Your system does not minimum system requirements, based on
+      https://github.com/ansible/awx/blob/devel/INSTALL.md#system-requirements
 
 - name: unarchive software
   unarchive:
-    src: https://github.com/ansible/awx/archive/{{ awx_version }}.tar.gz
+    src: "https://github.com/ansible/awx/archive/{{ awx_version }}.tar.gz"
     dest: /tmp
     remote_src: yes
-    creates: /tmp/awx-{{ awx_version }}
+    creates: "/tmp/awx-{{ awx_version }}"
   notify:
     - run awx installer
 
 - name: configure inventory
   template:
     src: inventory.j2
-    dest: /tmp/awx-{{ awx_version }}/installer/inventory
+    dest: "/tmp/awx-{{ awx_version }}/installer/inventory"
 
 - name: install requirements
   pip:
