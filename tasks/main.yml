@@ -8,6 +8,7 @@
     msg: >
       Your system does not minimum system requirements, based on
       https://github.com/ansible/awx/blob/devel/INSTALL.md#system-requirements
+      Your system has {{ ansible_memtotal_mb }} mb memory and {{ ansible_processor_vcpus }} cpus.
 
 - name: unarchive software
   unarchive:
