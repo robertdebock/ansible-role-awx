@@ -3,10 +3,7 @@ awx
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-awx.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-awx)
 
-Installs and optionally configures AWX for your system.
-
-This role installs a few pip packages on the controlnode. `become` access is required locally.
-
+The purpose of this role is to install and configure collectd on your system.
 
 Example Playbook
 ----------------

@@ -1,3 +1,0 @@
-Installs and optionally configures AWX for your system.
-
-This role installs a few pip packages on the controlnode. `become` access is required locally.
