@@ -38,6 +38,8 @@ platforms:
     image: ubuntu:artful
   - name: awx-ubuntu-devel
     image: ubuntu:devel
+  - name: awx-ubuntu-latest
+    image: ubuntu:latest
 provisioner:
   name: ansible
   lint:
