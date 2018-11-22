@@ -5,7 +5,7 @@
   args:
     chdir: "/tmp/awx-{{ awx_version }}/installer"
   when:
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or awx_ignore_docker
   notify:
     - wait for awx
 
