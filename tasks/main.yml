@@ -28,12 +28,18 @@
   pip:
     name: "{{ awx_pip_requirements }}"
     state: "{{ awx_package_state }}"
+  register: awx_install_requirements
+  until: awx_install_requirements is succeeded
+  retries: 3
 
 - name: install requirements on localhost
   pip:
     name: ansible-tower-cli
     state: "{{ awx_package_state }}"
   connection: local
+  register: awx_install_requirements_on_localhost
+  until: awx_install_requirements_on_localhost is succeeded
+  retries: 3
 
 - name: flush handlers
   meta: flush_handlers
