@@ -2,7 +2,7 @@
 # defaults file for awx
 
 # The version of AWX to install
-awx_version: 2.0.1
+awx_version: 2.1.2
 
 # The default password for the user `admin`.
 awx_admin_password: password
