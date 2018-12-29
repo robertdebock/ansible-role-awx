@@ -36,9 +36,6 @@ These variables are set in `defaults/main.yml`:
 ---
 # defaults file for awx
 
-# The version of AWX to install
-awx_version: 2.0.1
-
 # The default password for the user `admin`.
 awx_admin_password: password
 
