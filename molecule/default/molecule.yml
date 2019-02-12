@@ -34,8 +34,10 @@ platforms:
     image: opensuse:leap
   - name: awx-opensuse-tumbleweed
     image: opensuse:tumbleweed
-  - name: awx-ubuntu-artful
-    image: ubuntu:artful
+  - name: awx-ubuntu-latest
+    image: ubuntu:latest
+  - name: awx-ubuntu-rolling
+    image: ubuntu:rolling
   - name: awx-ubuntu-devel
     image: ubuntu:devel
   - name: awx-ubuntu-latest
