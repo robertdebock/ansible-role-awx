@@ -32,8 +32,6 @@ platforms:
     image: fedora:rawhide
   - name: awx-opensuse-leap
     image: opensuse:leap
-  - name: awx-opensuse-tumbleweed
-    image: opensuse:tumbleweed
   - name: awx-ubuntu-latest
     image: ubuntu:latest
   - name: awx-ubuntu-rolling
