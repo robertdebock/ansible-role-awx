@@ -51,8 +51,6 @@ awx_postgres_database:
 # AWX uses a secret key to encrypt data. This value should be stored in vault.
 awx_secret_key: awxsecret
 
-# To update packages this role places on the system, set `awx_package_state` to `latest`.
-awx_package_state: present
 
 # When using the API, should the SSL be verified?
 awx_tower_verify_ssl: no
