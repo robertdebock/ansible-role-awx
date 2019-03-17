@@ -10,38 +10,56 @@ driver:
 platforms:
   - name: awx-alpine-edge
     image: alpine:edge
+    pre_build_image: yes
     command: sh -c "while true ; do sleep 1 ; done"
   - name: awx-alpine-latest
     image: alpine:latest
+    pre_build_image: yes
     command: sh -c "while true ; do sleep 1 ; done"
   - name: awx-archlinux
     image: archlinux/base
+    pre_build_image: yes
   - name: awx-centos-6
     image: centos:6
+    pre_build_image: yes
   - name: awx-centos-latest
     image: centos:latest
+    pre_build_image: yes
   - name: awx-debian-latest
     image: debian:latest
+    pre_build_image: yes
   - name: awx-debian-stable
     image: debian:stable
+    pre_build_image: yes
   - name: awx-debian-unstable
     image: debian:unstable
+    pre_build_image: yes
   - name: awx-fedora-latest
     image: fedora:latest
+    pre_build_image: yes
   - name: awx-fedora-rawhide
     image: fedora:rawhide
+    pre_build_image: yes
   - name: awx-opensuse-leap
     image: opensuse:leap
+    pre_build_image: yes
   - name: awx-ubuntu-latest
     image: ubuntu:latest
+    pre_build_image: yes
   - name: awx-ubuntu-rolling
     image: ubuntu:rolling
+    pre_build_image: yes
   - name: awx-ubuntu-devel
     image: ubuntu:devel
+    pre_build_image: yes
   - name: awx-ubuntu-latest
     image: ubuntu:latest
+    pre_build_image: yes
 provisioner:
   name: ansible
+  playbooks:
+    prepare: ../resources/prepare.yml
+    converge: ../resources/playbook.yml
   lint:
     name: ansible-lint
 scenario:
