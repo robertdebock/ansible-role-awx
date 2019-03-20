@@ -11,4 +11,5 @@
   roles:
     - robertdebock.bootstrap
     - robertdebock.epel
+    - robertdebock.buildtools
     - robertdebock.python_pip
