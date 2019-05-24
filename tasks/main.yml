@@ -14,6 +14,8 @@
   uri:
     url: https://api.github.com/repos/ansible/awx/tags
   register: awx_get_tags
+  until: awx_get_tags is succeeded
+  retries: 3
 
 - name: pick most recent tag
   set_fact:
