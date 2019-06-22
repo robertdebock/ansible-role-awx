@@ -29,10 +29,6 @@ The machine you are running this on, may need to be prepared.
   gather_facts: no
   become: yes
 
-  vars:
-    python_pip_modules:
-      - name: ansible
-
   roles:
     - robertdebock.bootstrap
     - robertdebock.epel
@@ -64,6 +60,13 @@ awx_postgres_database:
 # AWX uses a secret key to encrypt data. This value should be stored in vault.
 awx_secret_key: awxsecret
 
+# The ports AWX should listen to.
+awx_http_port: 80
+awx_https_port: 443
+
+# Details for rabbitmq
+awx_rabbitmq_password: awxpass
+awx_rabbitmq_erlang_cookie: cookiemonster
 
 # When using the API, should the SSL be verified?
 awx_tower_verify_ssl: no

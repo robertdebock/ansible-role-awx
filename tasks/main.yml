@@ -29,6 +29,9 @@
     dest: /tmp
     remote_src: yes
     creates: "/tmp/awx-{{ awx_version }}"
+  register: awx_unarchive_software
+  until: awx_unarchive_software is succeeded
+  retries: 3
   notify:
     - run awx installer
 
