@@ -9,3 +9,4 @@
     - robertdebock.epel
     - robertdebock.buildtools
     - robertdebock.python_pip
+    - robertdebock.docker
