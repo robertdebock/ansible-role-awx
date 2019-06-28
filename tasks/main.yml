@@ -40,7 +40,7 @@
     src: inventory.j2
     dest: "/tmp/awx-{{ awx_version }}/installer/inventory"
 
-- name: install requirements
+- name: install pip requirements
   pip:
     name: "{{ awx_pip_requirements }}"
     state: present
