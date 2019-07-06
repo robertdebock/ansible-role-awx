@@ -34,6 +34,7 @@ The machine you are running this on, may need to be prepared.
     - robertdebock.epel
     - robertdebock.buildtools
     - robertdebock.python_pip
+    - robertdebock.docker
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -129,6 +130,7 @@ The following roles can be installed to ensure all requirements are met, using `
 - robertdebock.buildtools
 - robertdebock.epel
 - robertdebock.python_pip
+- robertdebock.docker
 
 ```
 
