@@ -134,6 +134,29 @@ The following roles can be installed to ensure all requirements are met, using `
 
 ```
 
+This role uses the following modules:
+```yaml
+---
+- assert
+- command
+- include
+- include_tasks
+- meta
+- pause
+- pip
+- set_fact
+- template
+- tower_credential
+- tower_inventory
+- tower_job_template
+- tower_organization
+- tower_project
+- tower_team
+- tower_user
+- unarchive
+- uri
+```
+
 Context
 -------
 
@@ -165,6 +188,9 @@ This role has been tested against the following distributions and Ansible versio
 |ubuntu-rolling|yes|yes|yes*|
 
 A single star means the build may fail, it's marked as an experimental build.
+
+
+
 
 Testing
 -------
