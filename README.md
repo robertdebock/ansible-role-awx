@@ -6,6 +6,9 @@ awx
 
 Install and configure collectd on your system.
 
+<img src="https://img.shields.io/ansible/role/d/29004"/>
+<img src="https://img.shields.io/ansible/quality/29004"/>
+
 Example Playbook
 ----------------
 
