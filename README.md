@@ -33,11 +33,12 @@ The machine you are running this on, may need to be prepared.
   become: yes
 
   roles:
-    - robertdebock.bootstrap
-    - robertdebock.epel
-    - robertdebock.buildtools
-    - robertdebock.python_pip
-    - robertdebock.docker
+    - role: robertdebock.bootstrap
+    - role: robertdebock.core_dependecies
+    - role: robertdebock.epel
+    - role: robertdebock.buildtools
+    - role: robertdebock.python_pip
+    - role: robertdebock.docker
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -130,6 +131,7 @@ The following roles can be installed to ensure all requirements are met, using `
 ```yaml
 ---
 - robertdebock.bootstrap
+- robertdebock.core_dependencies
 - robertdebock.buildtools
 - robertdebock.epel
 - robertdebock.python_pip
@@ -179,7 +181,7 @@ This role has been tested against the following distributions and Ansible versio
 |alpine-edge*|yes|yes|yes*|
 |alpine-latest|yes|yes|yes*|
 |archlinux|yes|yes|yes*|
-|centos-7|no|no|no*|
+|centos-7|yes|yes|yes*|
 |centos-latest|yes|yes|yes*|
 |debian-stable|yes|yes|yes*|
 |debian-unstable*|yes|yes|yes*|

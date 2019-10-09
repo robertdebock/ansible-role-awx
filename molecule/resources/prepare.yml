@@ -5,8 +5,9 @@
   become: yes
 
   roles:
-    - robertdebock.bootstrap
-    - robertdebock.epel
-    - robertdebock.buildtools
-    - robertdebock.python_pip
-    - robertdebock.docker
+    - role: robertdebock.bootstrap
+    - role: robertdebock.core_dependecies
+    - role: robertdebock.epel
+    - role: robertdebock.buildtools
+    - role: robertdebock.python_pip
+    - role: robertdebock.docker
