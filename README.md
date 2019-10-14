@@ -34,7 +34,7 @@ The machine you are running this on, may need to be prepared.
 
   roles:
     - role: robertdebock.bootstrap
-    - role: robertdebock.core_dependecies
+    - role: robertdebock.core_dependencies
     - role: robertdebock.epel
     - role: robertdebock.buildtools
     - role: robertdebock.python_pip
