@@ -8,8 +8,6 @@ services:
   - docker
 
 env:
-  global:
-    - namespace="robertdebock/"
   matrix:
     # - namespace="archlinux/" image="base"
     - image="docker-debian-systemd" tag="stable"
@@ -19,14 +17,13 @@ env:
     - image="docker-redhat-systemd"
     - image="docker-fedora-systemd"
     - image="docker-fedora-systemd" tag="rawhide"
-    - namespace="opensuse/" image="leap"
+    - image="docker-opensuse-systemd"
     - image="docker-ubuntu-systemd" tag="rolling"
     - image="docker-ubuntu-systemd" tag="devel"
     - image="docker-ubuntu-systemd"
 
 matrix:
   allow_failures:
-    - env: image="docker-alpine-openrc" tag="edge"
     - env: image="docker-debian-systemd" tag="unstable"
     - env: image="docker-fedora-systemd" tag="rawhide"
     - env: image="docker-ubuntu-systemd" tag="rolling"
