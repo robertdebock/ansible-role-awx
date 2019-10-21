@@ -178,13 +178,11 @@ This role has been tested on these [container images](https://hub.docker.com/):
 
 |container|allow_failures|
 |---------|--------------|
-|docker-alpine-openrc|yes|
-|docker-alpine-openrc|yes|
+|docker-debian-systemd|yes|
+|docker-debian-systemd|yes|
+|docker-debian-systemd|yes|
 |docker-centos-systemd|no|
-|docker-centos-systemd|no|
-|docker-debian-systemd|yes|
-|docker-debian-systemd|yes|
-|docker-debian-systemd|yes|
+|docker-redhat-systemd|no|
 |docker-fedora-systemd|yes|
 |docker-fedora-systemd|yes|
 |opensuse/|no|
@@ -200,6 +198,15 @@ This role has been tested on these Ansible versions:
 
 The indicator '~=' means [compatible with](https://www.python.org/dev/peps/pep-0440/#compatible-release). For example 'ansible~=2.8' would pick the latest ansible-2.8, for example ansible-2.8.5.
 
+Exceptions
+----------
+
+Some variarations of the build matrix do not work. These are the variations and reasons why the build won't work:
+
+| variation                 | reason                 |
+|---------------------------|------------------------|
+| Alpine | Python.h: No such file or directory |
+| Ubuntu | Unable to find any of pip2, pip to use.  pip needs to be installed. |
 
 
 
