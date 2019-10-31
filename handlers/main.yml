@@ -4,8 +4,6 @@
   command: ansible-playbook -i inventory install.yml
   args:
     chdir: "/tmp/awx-{{ awx_version }}/installer"
-  when:
-    - ansible_virtualization_type != "docker"
   notify:
     - wait for awx
 
