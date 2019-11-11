@@ -11,3 +11,4 @@
     - role: robertdebock.buildtools
     - role: robertdebock.python_pip
     - role: robertdebock.docker
+    - role: robertdebock.ansible

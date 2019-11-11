@@ -1,7 +1,8 @@
 ---
+- robertdebock.ansible
 - robertdebock.bootstrap
-- robertdebock.core_dependencies
 - robertdebock.buildtools
+- robertdebock.core_dependencies
+- robertdebock.docker
 - robertdebock.epel
 - robertdebock.python_pip
-- robertdebock.docker
