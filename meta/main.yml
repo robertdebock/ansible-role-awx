@@ -34,7 +34,6 @@ galaxy_info:
   galaxy_tags:
     - awx
     - centos
-    - fedora
     - opensuse
     - rhel
     - server
