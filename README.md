@@ -182,7 +182,6 @@ Some variarations of the build matrix do not work. These are the variations and 
 | Ubuntu | Unable to find any of pip2, pip to use.  pip needs to be installed. |
 
 
-
 Testing
 -------
 
