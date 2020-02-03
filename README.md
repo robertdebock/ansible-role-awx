@@ -6,7 +6,7 @@ awx
 
 <a href="https://github.com/robertdebock/ansible-role-awx/actions"><img src="https://github.com/robertdebock/ansible-role-awx/workflows/GitHub%20Action/badge.svg"/></a>
 
-Install and configure collectd on your system.
+Install and configure AWX on your system.
 
 Example Playbook
 ----------------
