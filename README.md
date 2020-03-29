@@ -1,5 +1,7 @@
-awx
+ARCHIVED - awx
 =========
+
+NOTA BENE: This repository has been archived, no maintenance is being performed anymore.
 
 Install and configure AWX on your system.
 
